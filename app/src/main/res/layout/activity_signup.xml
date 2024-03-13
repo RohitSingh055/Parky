@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity"
+    android:background="@color/primary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="700sp"
+        android:background="@drawable/shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/signupHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/poppins1"
+            android:text="Sign Up"
+            android:textColor="@color/primary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:id="@+id/tilusername"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="@id/signupHeading"
+            app:layout_constraintTop_toBottomOf="@id/signupHeading"
+            android:layout_marginHorizontal="32dp"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70sp"
+                android:id="@+id/username"
+                android:background="@drawable/rounded_rec"
+                android:hint="Name"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:id="@+id/tilEmail"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="@id/signupHeading"
+            app:layout_constraintTop_toBottomOf="@id/tilusername"
+            android:layout_marginHorizontal="32dp"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70sp"
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/rounded_rec"
+                android:hint="Email"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tilNumber"
+            android:layout_marginTop="20sp"
+            app:hintEnabled="false"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintStart_toStartOf="@id/signupHeading"
+            app:layout_constraintTop_toBottomOf="@id/tilEmail"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70sp"
+                android:id="@+id/number"
+                android:hint="Phone number"
+                android:background="@drawable/rounded_rec"
+                android:inputType="number"
+                android:minEms="10"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:id="@+id/tilPassword"
+            app:hintEnabled="false"
+            android:layout_marginTop="20sp"
+            app:layout_constraintStart_toStartOf="@id/signupHeading"
+            app:layout_constraintTop_toBottomOf="@id/tilNumber"
+            app:passwordToggleEnabled="true"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70sp"
+                android:id="@+id/password"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:background="@drawable/rounded_rec"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/sendOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="305dp"
+            android:height="56dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/poppins1"
+            android:text="Send OTP"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tilPassword"
+            app:layout_constraintVertical_bias="0.266" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins1"
+            android:text="Already have an account?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendOtp" />
+
+        <TextView
+            android:id="@+id/loginTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins1"
+            android:text="Log In"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/sendOtp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300sp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30sp"
+        >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:hintEnabled="false"
+            >
+
+            <EditText
+                android:layout_width="200sp"
+                android:layout_height="60sp"
+                android:hint="Enter OTP"
+                android:inputType="number"
+                android:background="@drawable/rounded_rec"
+                android:id="@+id/entered_otp"
+                android:maxLength="6"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/submitOtp"
+            android:layout_marginTop="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend OTP"
+            android:layout_marginTop="25sp"
+            android:id="@+id/resendOtp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
