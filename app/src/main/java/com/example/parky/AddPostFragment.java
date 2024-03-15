@@ -3,6 +3,8 @@ package com.example.parky;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
 
@@ -15,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class AddPostFragment extends Fragment {
 
@@ -34,6 +38,31 @@ public class AddPostFragment extends Fragment {
 
         // findviewbyid is used by addin .view in starting
         EditText locality = view.findViewById(R.id.locality);
+        EditText address = view.findViewById(R.id.address);
+
+        if(getArguments() != null){
+            double latitude = getArguments().getDouble("Latitude");
+            double longitude = getArguments().getDouble("Longitude");
+
+            String setLocality, setAddress;
+
+            Geocoder geocoder = new Geocoder(getActivity());
+            try{
+                List<Address> list = geocoder.getFromLocation(latitude, longitude, 1);
+
+                setLocality = list.get(0).getLocality();
+                setAddress = list.get(0).getAddressLine(0);
+
+                locality.setText(setLocality);
+                address.setText(setAddress);
+
+            }catch (Exception e){
+                Toast.makeText(getActivity(), "hey", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
 
         locality.setOnClickListener(v -> {
             if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&

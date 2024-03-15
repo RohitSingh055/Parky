@@ -1,6 +1,7 @@
 package com.example.parky;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
@@ -110,7 +111,10 @@ public class MapActivity extends AppCompatActivity implements MapListener {
                 double latitude = selectedMarkerGeoPoint.getLatitude();
                 double longitude = selectedMarkerGeoPoint.getLongitude();
 
-                Toast.makeText(MapActivity.this, "Latitude: "+latitude+" & Longitude: "+longitude, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MapActivity.this, HomeActivity.class);
+                intent.putExtra("Latitude", latitude);
+                intent.putExtra("Longitude", longitude);
+                startActivity(intent);
             }
         });
     }

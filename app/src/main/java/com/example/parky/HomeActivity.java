@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -22,6 +24,22 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            Double latitude = getIntent().getExtras().getDouble("Latitude");
+            Double longitude = getIntent().getExtras().getDouble("Longitude");
+            Log.d("meow", bundle.toString());
+            Toast.makeText(this, bundle.toString(), Toast.LENGTH_SHORT).show();
+            Bundle args = new Bundle();
+            args.putDouble("Latitude", latitude);
+            args.putDouble("Longitude", longitude);
+
+            loadFragment(new AddPostFragment(), 0, args);
+            bottomNavigationView.setSelectedItemId(R.id.addPost);
+        }
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -30,24 +48,26 @@ public class HomeActivity extends AppCompatActivity {
                 int id =item.getItemId();
 
                 if(id == R.id.profile){
-                    loadFragment(new ProfileFragment(), 1);
+                    loadFragment(new ProfileFragment(), 1, null);
                 }
                 else if(id == R.id.addPost){
-                    loadFragment(new AddPostFragment(), 1);
+                    loadFragment(new AddPostFragment(), 1, null);
                 }
                 else{
-                    loadFragment(new DashboardFragment(), 0);
+                    loadFragment(new DashboardFragment(), 0, null);
                 }
 
                 return true;
             }
         });
-
-        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
-    public void loadFragment(Fragment f, int flag)
+    public void loadFragment(Fragment f, int flag, Bundle args)
     {
+        if(args!=null) {
+            f.setArguments(args);
+        }
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         if(flag == 0) {
